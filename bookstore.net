@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NAHOM'S Bookstore</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .store-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .book {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 220px;
+      padding: 15px;
+      text-align: center;
+    }
+    .book img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .book h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+    .book p {
+      margin: 5px 0;
+      color: #555;
+    }
+    .price {
+      font-weight: bold;
+      color: #007bff;
+    }
+    button {
+      margin-top: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .cart {
+      margin-top: 30px;
+      background-color: #e0ffe0;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    #phone-number {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📚 Welcome to NAHOM's Bookstore</h1>
+
+  <div class="store-container">
+    <div class="book">
+      <img src="https://via.placeholder.com/200x280?text=Rush+to+the+Recon" alt="Rush to the Recon">
+      <h3>Rush to the Recon</h3>
+      <p>by Unknown Author</p>
+      <p class="price">Price: 250 ETB</p>
+      <button onclick="addToCart('Rush to the Recon')">Add to Cart</button>
+    </div>
+    <div class="book">
+      <img src="https://via.placeholder.com/200x280?text=The+Wise+Man" alt="The Wise Man">
+      <h3>The Wise Man</h3>
+      <p>by Unknown Author</p>
+      <p class="price">Price: 300 ETB</p>
+      <button onclick="addToCart('The Wise Man')">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="cart">
+    <h2>🛒 Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <div id="phone-number" style="display: none;">
+      📞 Call us at: 0911454425
+    </div>
+  </div>
+
+  <script>
+    const cartItems = document.getElementById('cart-items');
+    const phoneNumber = document.getElementById('phone-number');
+
+    function addToCart(bookName) {
+      const item = document.createElement('li');
+      item.textContent = bookName;
+      cartItems.appendChild(item);
+      phoneNumber.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
+<div class="checkout">
+  <h2>🧾 Checkout Form</h2>
+  <form onsubmit="submitOrder(event)">
+    <label for="name">Full Name:</label><br>
+    <input type="text" id="name" required><br><br>
+
+    <label for="phone">Phone Number:</label><br>
+    <input type="tel" id="phone" required><br><br>
+
+    <label for="address">Address:</label><br>
+    <textarea id="address" rows="3" required></textarea><br><br>
+
+    <label for="notes">Notes:</label><br>
+    <textarea id="notes" rows="2"></textarea><br><br>
+
+    <button type="submit">Place Order</button>
+  </form>
+</div>
+
+<script>
+  function submitOrder(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const notes = document.getElementById('notes').value;
+
+    alert(`Thank you, ${name}! Your order has been received. We'll contact you at ${phone}.`);
+  }
+</script>
+
+
+   
